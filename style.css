@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'Work Sans';
+    src: url('assets/fonts/WorkSans-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Work Sans';
+    src: url('assets/fonts/WorkSans-Italic-VariableFont_wght.ttf') format('truetype');
+    font-style: italic;
+}
+
+:root {
+    --white: hsl(0, 100%, 100%);
+    --purple-100: hsl(275, 100%, 97%);
+    --purple-600: hsl(292, 16%, 49%);
+    --purple-950: hsl(292, 42%, 14%);
+
+    --primary: hsl(281, 83%, 54%)
+}
+
+.sr-only {
+    position: absolute;
+    width: .01em;
+    height: .01em;
+    padding: 0;
+    margin: -.01em;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    margin: 0;
+    min-block-size: 100vh;
+
+    font-family: 'Work Sans', sans-serif;
+    background-color: var(--purple-100);
+}
+
+.card {
+    place-self: start;
+
+    inline-size: min(90vw, 55ch);
+    padding: 1rem;
+    margin-inline: auto;
+    margin-block-start: -7rem;
+
+    background-color: var(--white);
+    color: var(--purple-950);
+    border-radius: .5em;
+
+    @media screen and (min-width: 40rem) {
+        margin-block-start: -9rem;
+    }
+
+    header {
+        display: flex;
+        gap: 1.5rem;
+
+        font-size: 1.25rem;
+
+        @media screen and (min-width: 40rem) {
+            font-size: 2.25rem;
+            
+        }
+
+        img {
+            order: -1;
+            inline-size: 1em;
+        }
+    }
+
+}
+
+ul {
+    padding: 0;
+
+    list-style-type: none;
+}
+
+summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+
+    list-style: none;
+    font-weight: 600;
+    color: var(--purple-950);
+
+    &:is(:focus-visible, :hover){
+        color: var(--primary);
+        cursor: pointer;
+        outline: none;
+    }
+}
+
+details {
+    position: relative;
+    color: var(--purple-600);
+
+    &[open] summary {
+        margin-block-end: 1.5em;
+
+        &::after {
+            background-image: url('assets/images/icon-minus.svg');
+        }
+    }
+}
+
+summary::after {
+    content: '';
+    flex-shrink: 0;
+    inline-size: 2rem;
+    aspect-ratio: 1;
+
+    background-image: url('assets/images/icon-plus.svg');
+}
+
+li {
+    padding-block: 1rem;
+
+    &+li {
+        border-block-start: 1px solid var(--purple-100);
+    }
+}
