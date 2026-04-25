@@ -1,0 +1,368 @@
+2026-04-25 23:04:30,500 - __main__ - INFO - ================================================================================
+2026-04-25 23:04:30,500 - __main__ - INFO - PATIENT RISK PREDICTION PIPELINE STARTED
+2026-04-25 23:04:30,500 - __main__ - INFO - ================================================================================
+2026-04-25 23:04:30,500 - __main__ - INFO - 
+[STEP 1/7] Loading and validating patient data...
+2026-04-25 23:04:30,508 - src.data_loader - INFO - Data loaded successfully. Shape: (1000, 22)
+2026-04-25 23:04:30,525 - src.data_loader - INFO - Data validation passed successfully
+2026-04-25 23:04:30,533 - src.data_loader - INFO - Data Summary: 1000 records, 22 features
+2026-04-25 23:04:30,533 - __main__ - INFO - Data loaded: 1000 records, 22 features
+2026-04-25 23:04:30,533 - __main__ - INFO - 
+[STEP 2/7] Performing exploratory data analysis...
+2026-04-25 23:04:30,533 - src.eda - INFO - Starting EDA pipeline...
+2026-04-25 23:04:31,496 - src.eda - INFO - Saved target distribution plot to C:\Users\PC\OneDrive\Documents\patient_risk_prediction\reports/01_target_distribution.png
+2026-04-25 23:04:34,871 - src.eda - INFO - Saved correlation heatmap to C:\Users\PC\OneDrive\Documents\patient_risk_prediction\reports/02_correlation_heatmap.png
+2026-04-25 23:04:41,030 - src.eda - INFO - Saved numeric distributions to C:\Users\PC\OneDrive\Documents\patient_risk_prediction\reports/03_numeric_distributions.png
+2026-04-25 23:04:41,030 - src.eda - INFO - No missing values to plot
+2026-04-25 23:04:42,462 - src.eda - INFO - Saved target by feature plot to C:\Users\PC\OneDrive\Documents\patient_risk_prediction\reports/05_target_by_feature.png
+2026-04-25 23:04:42,562 - src.eda - INFO - Saved summary statistics to C:\Users\PC\OneDrive\Documents\patient_risk_prediction\reports/06_summary_statistics.txt
+2026-04-25 23:04:42,562 - src.eda - INFO - EDA completed. Generated 4 outputs
+2026-04-25 23:04:42,562 - __main__ - INFO - EDA completed. Generated 4 visualizations
+2026-04-25 23:04:42,562 - __main__ - INFO - 
+[STEP 3/7] Cleaning and preprocessing data...
+2026-04-25 23:04:42,579 - src.data_cleaner - INFO - Starting data cleaning pipeline...
+2026-04-25 23:04:42,579 - src.data_cleaner - INFO - Removed 0 duplicate records
+2026-04-25 23:04:42,579 - src.data_cleaner - INFO - No missing values found
+2026-04-25 23:04:42,596 - src.data_cleaner - INFO - No highly correlated features found
+2026-04-25 23:04:42,613 - src.data_cleaner - INFO - Found 6 outliers in bmi (IQR method)
+2026-04-25 23:04:42,628 - src.data_cleaner - INFO - Found 8 outliers in systolic_bp (IQR method)
+2026-04-25 23:04:42,636 - src.data_cleaner - INFO - Found 5 outliers in diastolic_bp (IQR method)
+2026-04-25 23:04:42,652 - src.data_cleaner - INFO - Found 3 outliers in heart_rate (IQR method)
+2026-04-25 23:04:42,652 - src.data_cleaner - INFO - Found 5 outliers in temperature (IQR method)
+2026-04-25 23:04:42,668 - src.data_cleaner - INFO - Found 2 outliers in respiratory_rate (IQR method)
+2026-04-25 23:04:42,668 - src.data_cleaner - INFO - Found 6 outliers in glucose (IQR method)
+2026-04-25 23:04:42,698 - src.data_cleaner - INFO - Found 7 outliers in hemoglobin (IQR method)
+2026-04-25 23:04:42,718 - src.data_cleaner - INFO - Found 9 outliers in wbc_count (IQR method)
+2026-04-25 23:04:42,733 - src.data_cleaner - INFO - Found 3 outliers in platelets (IQR method)
+2026-04-25 23:04:42,753 - src.data_cleaner - INFO - Found 149 outliers in diabetes (IQR method)
+2026-04-25 23:04:42,754 - src.data_cleaner - INFO - Found 196 outliers in hypertension (IQR method)
+2026-04-25 23:04:42,770 - src.data_cleaner - INFO - Found 73 outliers in heart_disease (IQR method)
+2026-04-25 23:04:42,786 - src.data_cleaner - INFO - Found 49 outliers in copd (IQR method)
+2026-04-25 23:04:42,798 - src.data_cleaner - INFO - Found 81 outliers in chronic_kidney_disease (IQR method)
+2026-04-25 23:04:42,814 - src.data_cleaner - INFO - Found 94 outliers in antibiotic_use (IQR method)
+2026-04-25 23:04:42,814 - src.data_cleaner - INFO - Found 65 outliers in corticosteroid_use (IQR method)
+2026-04-25 23:04:42,814 - src.data_cleaner - INFO - Outliers handled successfully
+2026-04-25 23:04:42,814 - src.data_cleaner - INFO - Data cleaning completed
+2026-04-25 23:04:42,814 - __main__ - INFO - Cleaned data shape: (1000, 22)
+2026-04-25 23:04:42,845 - __main__ - INFO - Cleaned data saved to C:\Users\PC\OneDrive\Documents\patient_risk_prediction\data\processed/cleaned_dataset.csv
+2026-04-25 23:04:42,845 - __main__ - INFO - 
+[STEP 4/7] Engineering clinical features...
+2026-04-25 23:04:42,861 - src.feature_engineer - INFO - Starting feature engineering pipeline...
+2026-04-25 23:04:42,861 - src.feature_engineer - INFO - Created 2 vital features
+2026-04-25 23:04:42,861 - src.feature_engineer - INFO - Created 3 demographic features
+2026-04-25 23:04:42,876 - src.feature_engineer - INFO - Created 3 lab features
+2026-04-25 23:04:42,876 - src.feature_engineer - INFO - Created comorbidity index from 5 conditions
+2026-04-25 23:04:42,876 - src.feature_engineer - INFO - Created medication-related features
+2026-04-25 23:04:42,892 - src.feature_engineer - INFO - One-hot encoded 1 categorical features
+2026-04-25 23:04:42,892 - src.feature_engineer - INFO - Identified 28 numeric features for scaling
+2026-04-25 23:04:42,892 - src.feature_engineer - INFO - Feature engineering completed
+2026-04-25 23:04:42,892 - __main__ - INFO - Engineered features: 32 total features
+2026-04-25 23:04:42,892 - __main__ - INFO - Created 10 new features
+2026-04-25 23:04:42,892 - __main__ - INFO - 
+[STEP 5/7] Training models with cross-validation...
+2026-04-25 23:04:42,908 - src.model_trainer - INFO - Train/Test split - Train: 800, Test: 200
+2026-04-25 23:04:42,908 - src.model_trainer - INFO - Train set target distribution: {0: 451, 1: 349}
+2026-04-25 23:04:42,908 - src.model_trainer - INFO - Test set target distribution: {0: 113, 1: 87}
+2026-04-25 23:04:42,908 - src.model_trainer - INFO - Training all models...
+2026-04-25 23:04:42,908 - src.model_trainer - INFO - Starting 5-fold cross-validation for logistic_regression...
+2026-04-25 23:04:53,776 - src.model_trainer - ERROR - Error training logistic_regression: 
+All the 5 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+5 fits failed with the following error:
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\categorical.py", line 623, in astype
+    new_cats = new_cats.astype(dtype=dtype, copy=copy)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\string_.py", line 940, in astype
+    values = arr.astype(dtype)
+             ^^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: '0-18'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\model_selection\_validation.py", line 833, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\base.py", line 1336, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\pipeline.py", line 613, in fit
+    Xt = self._fit(X, y, routed_params, raw_params=params)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\pipeline.py", line 547, in _fit
+    X, fitted_transformer = fit_transform_one_cached(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\joblib\memory.py", line 326, in __call__
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\pipeline.py", line 1484, in _fit_transform_one
+    res = transformer.fit_transform(X, y, **params.get("fit_transform", {}))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\utils\_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\base.py", line 910, in fit_transform
+    return self.fit(X, y, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\preprocessing\_data.py", line 924, in fit
+    return self.partial_fit(X, y, sample_weight)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\base.py", line 1336, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\preprocessing\_data.py", line 961, in partial_fit
+    X = validate_data(
+        ^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\utils\validation.py", line 2902, in validate_data
+    out = check_array(X, input_name="X", **check_params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\utils\validation.py", line 940, in check_array
+    array = array.astype(new_dtype)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\generic.py", line 6541, in astype
+    new_data = self._mgr.astype(dtype=dtype, errors=errors)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\internals\managers.py", line 611, in astype
+    return self.apply("astype", dtype=dtype, errors=errors)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\internals\managers.py", line 442, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\internals\blocks.py", line 607, in astype
+    new_values = astype_array_safe(values, dtype, errors=errors)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\dtypes\astype.py", line 240, in astype_array_safe
+    new_values = astype_array(values, dtype, copy=copy)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\dtypes\astype.py", line 182, in astype_array
+    values = values.astype(dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\categorical.py", line 634, in astype
+    raise ValueError(msg) from err
+ValueError: Cannot cast str dtype to float64
+
+2026-04-25 23:04:53,777 - src.model_trainer - INFO - Starting 5-fold cross-validation for random_forest...
+2026-04-25 23:04:54,296 - src.model_trainer - ERROR - Error training random_forest: 
+All the 5 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+5 fits failed with the following error:
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\categorical.py", line 623, in astype
+    new_cats = new_cats.astype(dtype=dtype, copy=copy)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\string_.py", line 940, in astype
+    values = arr.astype(dtype)
+             ^^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: '0-18'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\model_selection\_validation.py", line 833, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\base.py", line 1336, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\pipeline.py", line 621, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\base.py", line 1336, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\ensemble\_forest.py", line 359, in fit
+    X, y = validate_data(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\utils\validation.py", line 2919, in validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\utils\validation.py", line 1314, in check_X_y
+    X = check_array(
+        ^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\utils\validation.py", line 940, in check_array
+    array = array.astype(new_dtype)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\generic.py", line 6541, in astype
+    new_data = self._mgr.astype(dtype=dtype, errors=errors)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\internals\managers.py", line 611, in astype
+    return self.apply("astype", dtype=dtype, errors=errors)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\internals\managers.py", line 442, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\internals\blocks.py", line 607, in astype
+    new_values = astype_array_safe(values, dtype, errors=errors)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\dtypes\astype.py", line 240, in astype_array_safe
+    new_values = astype_array(values, dtype, copy=copy)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\dtypes\astype.py", line 182, in astype_array
+    values = values.astype(dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\categorical.py", line 634, in astype
+    raise ValueError(msg) from err
+ValueError: Cannot cast str dtype to float32
+
+2026-04-25 23:04:54,296 - src.model_trainer - INFO - Starting 5-fold cross-validation for gradient_boosting...
+2026-04-25 23:04:54,360 - src.model_trainer - ERROR - Error training gradient_boosting: 
+All the 5 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+5 fits failed with the following error:
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\categorical.py", line 623, in astype
+    new_cats = new_cats.astype(dtype=dtype, copy=copy)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\string_.py", line 940, in astype
+    values = arr.astype(dtype)
+             ^^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: '0-18'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\model_selection\_validation.py", line 833, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\base.py", line 1336, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\pipeline.py", line 621, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\base.py", line 1336, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\ensemble\_gb.py", line 666, in fit
+    X, y = validate_data(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\utils\validation.py", line 2919, in validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\utils\validation.py", line 1314, in check_X_y
+    X = check_array(
+        ^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\utils\validation.py", line 940, in check_array
+    array = array.astype(new_dtype)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\generic.py", line 6541, in astype
+    new_data = self._mgr.astype(dtype=dtype, errors=errors)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\internals\managers.py", line 611, in astype
+    return self.apply("astype", dtype=dtype, errors=errors)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\internals\managers.py", line 442, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\internals\blocks.py", line 607, in astype
+    new_values = astype_array_safe(values, dtype, errors=errors)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\dtypes\astype.py", line 240, in astype_array_safe
+    new_values = astype_array(values, dtype, copy=copy)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\dtypes\astype.py", line 182, in astype_array
+    values = values.astype(dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\categorical.py", line 634, in astype
+    raise ValueError(msg) from err
+ValueError: Cannot cast str dtype to float32
+
+2026-04-25 23:04:54,360 - src.model_trainer - INFO - Starting 5-fold cross-validation for xgboost...
+2026-04-25 23:04:54,600 - src.model_trainer - ERROR - Error training xgboost: 
+All the 5 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+5 fits failed with the following error:
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\data.py", line 408, in pandas_feature_info
+    new_feature_types.append(_pandas_dtype_mapper[dtype.name])
+                             ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'category'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\model_selection\_validation.py", line 833, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\base.py", line 1336, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\sklearn\pipeline.py", line 621, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py", line 751, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\sklearn.py", line 1787, in fit
+    train_dmatrix, evals = _wrap_evaluation_matrices(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\sklearn.py", line 700, in _wrap_evaluation_matrices
+    train_dmatrix = create_dmatrix(
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\sklearn.py", line 1257, in _create_dmatrix
+    return QuantileDMatrix(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py", line 751, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py", line 1719, in __init__
+    self._init(
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py", line 1783, in _init
+    it.reraise()
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py", line 594, in reraise
+    raise exc  # pylint: disable=raising-bad-type
+    ^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py", line 575, in _handle_exception
+    return fn()
+           ^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py", line 662, in <lambda>
+    return self._handle_exception(lambda: int(self.next(input_data)), 0)
+                                              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\data.py", line 1642, in next
+    input_data(**self.kwargs)
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py", line 751, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py", line 642, in input_data
+    new, feature_names, feature_types = _proxy_transform(
+                                        ^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\data.py", line 1695, in _proxy_transform
+    df, feature_names, feature_types = _transform_pandas_df(
+                                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\data.py", line 668, in _transform_pandas_df
+    feature_names, feature_types = pandas_feature_info(
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\data.py", line 410, in pandas_feature_info
+    _invalid_dataframe_dtype(data)
+  File "C:\Users\PC\AppData\Roaming\Python\Python312\site-packages\xgboost\data.py", line 373, in _invalid_dataframe_dtype
+    raise ValueError(msg)
+ValueError: DataFrame.dtypes for data must be int, float, bool or category. When categorical type is supplied, the experimental DMatrix parameter`enable_categorical` must be set to `True`.  Invalid columns:age_group: category, bmi_category: category
+
+2026-04-25 23:04:54,600 - src.model_trainer - INFO - Successfully trained 0 models
+2026-04-25 23:04:54,600 - __main__ - ERROR - Unexpected error occurred: No models trained yet
+Traceback (most recent call last):
+  File "C:\Users\PC\OneDrive\Documents\patient_risk_prediction\main.py", line 91, in main
+    best_name, best_model = trainer.select_best_model()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\OneDrive\Documents\patient_risk_prediction\src\model_trainer.py", line 163, in select_best_model
+    raise ValueError("No models trained yet")
+ValueError: No models trained yet
+Traceback (most recent call last):
+  File "C:\Users\PC\OneDrive\Documents\patient_risk_prediction\main.py", line 155, in <module>
+    main()
+  File "C:\Users\PC\OneDrive\Documents\patient_risk_prediction\main.py", line 91, in main
+    best_name, best_model = trainer.select_best_model()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\OneDrive\Documents\patient_risk_prediction\src\model_trainer.py", line 163, in select_best_model
+    raise ValueError("No models trained yet")
+ValueError: No models trained yet

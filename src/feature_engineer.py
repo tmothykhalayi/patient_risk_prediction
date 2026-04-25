@@ -112,27 +112,45 @@ class FeatureEngineer:
     
     def encode_categorical_features(self, method: str = 'one_hot') -> pd.DataFrame:
         """Encode categorical features."""
-        categorical_cols = self.data.select_dtypes(include=['object']).columns.tolist()
-        categorical_cols = [col for col in categorical_cols if col != TARGET_COLUMN]
+        # First, convert all categorical columns (including from cuts) to category type
+        cols_to_convert = []
+        for col in self.data.columns:
+            if col != TARGET_COLUMN:
+                if self.data[col].dtype == 'object' or isinstance(self.data[col].dtype, pd.CategoricalDtype):
+                    cols_to_convert.append(col)
         
-        if not categorical_cols:
+        if not cols_to_convert:
             logger.info("No categorical features to encode")
             return self.data
         
         if method == 'one_hot':
-            self.data = pd.get_dummies(self.data, columns=categorical_cols, drop_first=True)
-            self.encoded_features = categorical_cols
-            logger.info(f"One-hot encoded {len(categorical_cols)} categorical features")
+            # Convert categorical to string first, then apply get_dummies
+            for col in cols_to_convert:
+                self.data[col] = self.data[col].astype(str)
+            
+            self.data = pd.get_dummies(self.data, columns=cols_to_convert, drop_first=True, dtype=float)
+            self.encoded_features = cols_to_convert
+            logger.info(f"One-hot encoded {len(cols_to_convert)} categorical features")
         
         elif method == 'label':
             from sklearn.preprocessing import LabelEncoder
             le_dict = {}
-            for col in categorical_cols:
+            for col in cols_to_convert:
                 le = LabelEncoder()
                 self.data[col] = le.fit_transform(self.data[col].astype(str))
                 le_dict[col] = le
-            self.encoded_features = categorical_cols
-            logger.info(f"Label encoded {len(categorical_cols)} categorical features")
+            self.encoded_features = cols_to_convert
+            logger.info(f"Label encoded {len(cols_to_convert)} categorical features")
+        
+        # Ensure all data is numeric
+        numeric_cols = self.data.select_dtypes(include=['object']).columns.tolist()
+        numeric_cols = [col for col in numeric_cols if col != TARGET_COLUMN]
+        if numeric_cols:
+            for col in numeric_cols:
+                try:
+                    self.data[col] = pd.to_numeric(self.data[col], errors='coerce').fillna(0)
+                except:
+                    pass
         
         return self.data
     
