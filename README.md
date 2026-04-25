@@ -92,11 +92,11 @@ It saves the transformed dataset to data/processed/cleaned_dataset.csv.
 It exports the best model and scaler to the models/ directory.
 It yields all visualization charts and the text evaluation report to reports/.
 Interpreting the Outputs
-After a successful run, navigate to the reports/ folder. The most important files for healthcare providers and care coordinators are:
+After a successful run, navigate to the reports/ folder. The most important files for schools and stakeholders are:
 
-risk_scores.csv: A ready-to-use clinical dashboard file. It lists every patient in the test set alongside their predicted Risk Score (between 0.0 and 1.0) and translates this into a categorical Risk Level (🟢 Low, 🟡 Medium, 🔴 High).
+risk_scores.csv: A ready-to-use dashboard file. It lists every student in the test set alongside their predicted Risk Score (between 0.0 and 1.0) and translates this into a categorical Risk Level (🟢 Low, 🟡 Medium, 🔴 High).
 evaluation_report.txt: A detailed breakdown of how each model performed, including Stratified 5-Fold Cross-Validation metrics and the final tuned classification report.
-09_feature_importance.png: A bar chart visualizing the Top 10 clinical factors that influence patient risk (e.g., Comorbidity Index, Lab Values, Medication Count). This provides explainability for why the model makes its predictions.
+09_feature_importance.png: A bar chart visualizing the Top 10 factors that influence dropout risk (e.g., GPA, Stress Index, Attendance Rate). This provides explainability for why the model makes its decisions.
 02 to 07 image files: Visual evidence of the pipeline's analysis (Correlation heatmaps, ROC curves, Confusion matrices).
 Future Enhancements & Proposed Features
 To further improve the utility and scale of this Early Warning System, the following features could be added in the future:
