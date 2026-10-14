@@ -7,7 +7,6 @@
 This project provides a complete, production-ready machine learning pipeline to predict patient health risks and readmission likelihood using electronic health records (EHR) and clinical data. The model is designed to act as an Early Warning System (EWS), enabling healthcare providers and care coordinators to implement preventive interventions and improve patient outcomes.
 
 **Status:** ✅ Production Ready | **Performance:** 85.1% Recall | **Framework:** FastAPI + scikit-learn | **Python:** 3.12
-
 ---
 
 ## 📋 Table of Contents
@@ -26,7 +25,6 @@ This project provides a complete, production-ready machine learning pipeline to 
 - [Production Checklist](#production-checklist)
 
 ---
-
 ## Project Overview
 
 ### What This Project Does
